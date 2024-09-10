@@ -5,7 +5,7 @@ const AllUsers = () => {
     const [data, setData] = useState([])
     const getApiData = async () => {
         try {
-            const res = await axios.get("http://localhost:8000/api/user")
+            const res = await axios.get("https://zens-bankend.onrender.com/api/user")
             console.log(res)
             if (res.status === 200) {
                 setData(res.data.data.reverse())

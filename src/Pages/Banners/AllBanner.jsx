@@ -10,7 +10,7 @@ const AllBanner = () => {
     useEffect(() => {
         const fetchBanners = async () => {
             try {
-                const res = await axios.get('http://localhost:8000/api/banner');
+                const res = await axios.get('https://zens-bankend.onrender.com/api/banner');
                 if (res.status === 200) {
                     setBanners(res.data.data);
                 }
@@ -24,7 +24,7 @@ const AllBanner = () => {
 
     const handleDelete = (id) => {
         if (window.confirm('Are you sure you want to delete this banner?')) {
-            axios.delete(`http://localhost:8000/api/banner/${id}`)
+            axios.delete(`https://zens-bankend.onrender.com/api/banner/${id}`)
                 .then(() => {
                     setBanners(banners.filter(banner => banner._id !== id)); // Remove banner from UI
                     toast.success('Banner deleted successfully');
@@ -39,7 +39,7 @@ const AllBanner = () => {
     // Function to toggle banner active status
     const toggleActive = async (id, currentStatus) => {
         try {
-            await axios.patch(`http://localhost:8000/api/banner/${id}`, { active: !currentStatus });
+            await axios.patch(`https://zens-bankend.onrender.com/api/banner/${id}`, { active: !currentStatus });
             setBanners(banners.map(banner =>
                 banner._id === id ? { ...banner, active: !currentStatus } : banner
             ));

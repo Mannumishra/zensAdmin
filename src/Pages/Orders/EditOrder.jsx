@@ -15,7 +15,7 @@ const EditOrder = () => {
     useEffect(() => {
         const fetchOrder = async () => {
             try {
-                const response = await axios.get(`http://localhost:8000/api/checkout/${id}`);
+                const response = await axios.get(`https://zens-bankend.onrender.com/api/checkout/${id}`);
                 setOrder(response.data);
                 setOrderStatus(response.data.orderStatus);
                 setPaymentStatus(response.data.paymentStatus);
@@ -32,7 +32,7 @@ const EditOrder = () => {
 
     const handleUpdate = async () => {
         try {
-            await axios.put(`http://localhost:8000/api/checkout/${id}`, {
+            await axios.put(`https://zens-bankend.onrender.com/api/checkout/${id}`, {
                 orderStatus,
                 paymentStatus
             });

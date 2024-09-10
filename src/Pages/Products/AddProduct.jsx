@@ -13,7 +13,7 @@ const AddProduct = () => {
 
     const getProductCategory = async () => {
         try {
-            const res = await axios.get("http://localhost:8000/api/category");
+            const res = await axios.get("https://zens-bankend.onrender.com/api/category");
             if (res.status === 200) {
                 setProductCategory(res.data.data);
             }
@@ -24,7 +24,7 @@ const AddProduct = () => {
 
     const getProductType = async () => {
         try {
-            const res = await axios.get("http://localhost:8000/api/product-category");
+            const res = await axios.get("https://zens-bankend.onrender.com/api/product-category");
             if (res.status === 200) {
                 setProductType(res.data);
             }
@@ -101,7 +101,7 @@ const AddProduct = () => {
                 }
             }
 
-            const response = await axios.post('http://localhost:8000/api/products', form, {
+            const response = await axios.post('https://zens-bankend.onrender.com/api/products', form, {
                 headers: {
                     'Content-Type': 'multipart/form-data',
                 },

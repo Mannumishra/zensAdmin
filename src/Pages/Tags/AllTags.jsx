@@ -10,7 +10,7 @@ const AllTags = () => {
 
     const getApiData = async () => {
         try {
-            const res = await axios.get("http://localhost:8000/api/product-category")
+            const res = await axios.get("https://zens-bankend.onrender.com/api/product-category")
             console.log(res)
             if (res.status === 200) {
                 setData(res.data.reverse())
@@ -22,7 +22,7 @@ const AllTags = () => {
 
     const deleteRecord = async (_id) => {
         try {
-            const res = await axios.delete("http://localhost:8000/api/product-category/" + _id)
+            const res = await axios.delete("https://zens-bankend.onrender.com/api/product-category/" + _id)
             console.log(res)
             if (res.status === 200) {
                 toast.success(res.data.message)

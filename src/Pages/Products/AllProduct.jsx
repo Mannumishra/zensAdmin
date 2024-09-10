@@ -10,7 +10,7 @@ const AllProduct = () => {
 
     const getApiData = async () => {
         try {
-            const res = await axios.get("http://localhost:8000/api/products")
+            const res = await axios.get("https://zens-bankend.onrender.com/api/products")
             if (res.status === 200) {
                 setData(res.data.data.reverse())
             }
@@ -21,7 +21,7 @@ const AllProduct = () => {
 
     const deteleImage = async (id) => {
         try {
-            const res = await axios.delete("http://localhost:8000/api/products/" + id)
+            const res = await axios.delete("https://zens-bankend.onrender.com/api/products/" + id)
              console.log(res)
             if(res.status===200){
                 toast.success(res.data.message)
