@@ -7,6 +7,7 @@ import 'react-toastify/dist/ReactToastify.css';
 const AddBanner = () => {
     const [isLoading, setIsLoading] = useState(false);
     const [image, setImage] = useState(null);
+    const [name, setName] = useState("")
     const [active, setActive] = useState(false);
     const navigate = useNavigate()
 
@@ -14,6 +15,9 @@ const AddBanner = () => {
         setImage(e.target.files[0]);
     };
 
+    const handleInput = (e) => {
+        setName(e.target.value)
+    }
     const handleSubmit = async (e) => {
         e.preventDefault();
         if (!image) {
@@ -24,15 +28,17 @@ const AddBanner = () => {
         const formData = new FormData();
         formData.append('image', image);
         formData.append('active', active);
+        formData.append("name", name)
 
         setIsLoading(true);
         try {
-            const res = await axios.post('https://zens-bankend.onrender.com/api/banner', formData);
+            const res = await axios.post('http://localhost:8000/api/banner', formData);
             if (res.status === 200) {
-                navigate = ("/all-banners")
+                // navigate = ("/all-banners")
                 toast.success(res.data.message);
             }
         } catch (error) {
+            console.log(error)
             toast.error('Failed to upload banner');
         } finally {
             setIsLoading(false);
@@ -53,6 +59,10 @@ const AddBanner = () => {
 
             <div className="d-form">
                 <form className="row g-3" onSubmit={handleSubmit}>
+                    <div className="col-md-6">
+                        <label htmlFor="bannerImage" className="form-label">Banner Name</label>
+                        <input type="text" className="form-control" id="bannerImage" onChange={handleInput} />
+                    </div>
                     <div className="col-md-6">
                         <label htmlFor="bannerImage" className="form-label">Banner Image</label>
                         <input type="file" className="form-control" id="bannerImage" onChange={handleFileChange} />

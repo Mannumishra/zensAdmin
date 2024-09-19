@@ -13,7 +13,7 @@ const AllOrder = () => {
     useEffect(() => {
         const fetchOrders = async () => {
             try {
-                const response = await axios.get('https://zens-bankend.onrender.com/api/checkouts');
+                const response = await axios.get('http://localhost:8000/api/checkouts');
                 // Adjust the URL as needed
                 console.log(response)
                 setOrders(response.data);

@@ -16,7 +16,7 @@ const EditBanner = () => {
     useEffect(() => {
         const fetchBanner = async () => {
             try {
-                const res = await axios.get(`https://zens-bankend.onrender.com/api/banner/${id}`);
+                const res = await axios.get(`http://localhost:8000/api/banner/${id}`);
                 console.log(res)
                 if (res.status === 200) {
                     const bannerData = res.data.data;
@@ -43,7 +43,7 @@ const EditBanner = () => {
         formData.append('active', active);
 
         try {
-            const res = await axios.patch(`https://zens-bankend.onrender.com/api/banner/${id}`, formData, {
+            const res = await axios.patch(`http://localhost:8000/api/banner/${id}`, formData, {
                 headers: {
                     'Content-Type': 'multipart/form-data',
                 },

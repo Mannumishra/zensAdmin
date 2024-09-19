@@ -10,7 +10,7 @@ const AllCategory = () => {
 
     const getApiData = async () => {
         try {
-            const res = await axios.get("https://zens-bankend.onrender.com/api/category")
+            const res = await axios.get("http://localhost:8000/api/category")
             console.log(res)
             setData(res.data.data.reverse())
         } catch (error) {
@@ -23,7 +23,7 @@ const AllCategory = () => {
 
     const handleDelete = async (_id) => {
         try {
-            const res = await axios.delete("https://zens-bankend.onrender.com/api/category/" + _id)
+            const res = await axios.delete("http://localhost:8000/api/category/" + _id)
             console.log(res)
             getApiData()
         } catch (error) {
